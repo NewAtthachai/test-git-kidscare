@@ -1,0 +1,20 @@
+steps:
+    - name: "asia.gcr.io/$PROJECT_ID/docker"
+      args: ["build", "-t", "asia.gcr.io/$PROJECT_ID/kidscare-owner-backoffice:develop", "."]
+    - name: "asia.gcr.io/$PROJECT_ID/docker"
+      args: ["push", "asia.gcr.io/$PROJECT_ID/kidscare-owner-backoffice:develop"]
+    - name: "asia.gcr.io/$PROJECT_ID/helm"
+      args:
+        - upgrade
+        - kidscare-owner-backoffice-dev
+        - --namespace
+        - develop
+        - --recreate-pods
+        - -f
+        - deployment/kidscare-owner-backoffice/values-dev.yaml
+        - deployment/kidscare-owner-backoffice/
+      env:
+        - "CLOUDSDK_CORE_PROJECT=kidscareplus"
+        - "CLOUDSDK_COMPUTE_ZONE=asia-southeast1-a"
+        - "CLOUDSDK_CONTAINER_CLUSTER=kids-nonprod-cluster"
+  
