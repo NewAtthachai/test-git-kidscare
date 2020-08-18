@@ -64,7 +64,7 @@
         <b-container class="bv-example-row">
           <br />
 
-          <b-row cols="1" cols-sm="2" cols-md="4" cols-lg="4" cols-xl="4">
+          <b-row col="1" cols="1" cols-sm="2" cols-md="4" cols-lg="4" cols-xl="4">
             <b-col>
               <img src="~/static/images/Mask Group 50.png" />
             </b-col>

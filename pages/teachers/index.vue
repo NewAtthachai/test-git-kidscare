@@ -14,19 +14,19 @@
           </select>
         </div>
         <div class="input-group col-md-4">
-          <b-input
-            type="input"
-            placeholder="ค้นหาชื่อ-นามสกุล/ตำแหน่ง"
-            class="form-control border border-light w-25 mb-3 h-75"
-          />
-        </div>
-        <div class="input-group col-md-2">
-          <b-button type="submit" variant="primary" class="w-75 mb-3 h-75 sign-in-btn">ค้าหา</b-button>
+          <!-- <b-input-group> -->
+          <b-form-input class="form-control h-100" placeholder="ค้นหาชื่อ-นามสกุล / ตำแหน่ง"></b-form-input>
+          <b-input-group-append>
+            <b-button variant="primary">
+              <b-img src="~static/images/Group 3472.png" />
+            </b-button>
+          </b-input-group-append>
+          <!-- </b-input-group> -->
         </div>
       </div>
     </b-card-body>
-    <div class="decoration-top"></div>
-    <div class="decoration-botton"></div>
+    <div class="decorationtop"></div>
+
     <!----------------------------------------------------------------------------------->
     <b-card-body class="mt-3 mb-3 p-3">
       <div class="form-row">
@@ -37,8 +37,8 @@
         <div class="input-group col-md-2">ยอดชำระ</div>
       </div>
     </b-card-body>
-    <div class="decoration-top"></div>
-    <div class="decoration-botton"></div>
+    <div class="decorationtop"></div>
+
     <!------------------------------------------------------------------------------------>
 
     <b-card class="shadow-sm mt-3 mb-3 p-4">
@@ -51,7 +51,7 @@
 
         <div class="input-group col-md-2">
           <b-img src="~/static/images/eye.png" />
-          <b-link class="stretched-link" to="/teachers/ViewTeacherScreen"></b-link>
+          <b-link class="stretched-link" to="/teachers/viewteacher"></b-link>
         </div>
       </div>
     </b-card>
@@ -66,7 +66,6 @@
         <div class="input-group col-md-2 text-danger">ค้างชำระ</div>
         <div class="input-group col-md-2">
           <b-img src="~/static/images/eye.png" />
-          <b-link class="stretched-link" to="/teachers/ViewTeacherScreen"></b-link>
         </div>
       </div>
     </b-card>
@@ -81,7 +80,6 @@
         <div class="input-group col-md-2">ชำระแล้ว</div>
         <div class="input-group col-md-2">
           <b-img src="~/static/images/eye.png" />
-          <b-link class="stretched-link" to="/teachers/ViewTeacherScreen"></b-link>
         </div>
       </div>
     </b-card>
@@ -96,7 +94,6 @@
         <div class="input-group col-md-2">ชำระแล้ว</div>
         <div class="input-group col-md-2">
           <b-img src="~/static/images/eye.png" />
-          <b-link class="stretched-link" to="/teachers/ViewTeacherScreen"></b-link>
         </div>
       </div>
     </b-card>
@@ -111,7 +108,6 @@
         <div class="input-group col-md-2">ชำระแล้ว</div>
         <div class="input-group col-md-2">
           <b-img src="~/static/images/eye.png" />
-          <b-link class="stretched-link" to="/teachers/ViewTeacherScreen"></b-link>
         </div>
       </div>
     </b-card>
@@ -176,17 +172,17 @@
           <b-card-body id="customers" class="mt-3 mb-3 p-3">
             <div class="form-row">
               <b-check></b-check>
-              <div class="iuput-group col-md-2">ชื่อ-นามสกุล</div>
-              <div class="input-group col-md-2">ครูดูแล</div>
-              <div class="input-group col-md-2">ประเภท</div>
-              <div class="input-group col-md-2">ยอดชำระ</div>
+              <div class="iuput-group col-md-2 text-primary">ชื่อ-นามสกุล</div>
+              <div class="input-group col-md-2 text-primary">ครูดูแล</div>
+              <div class="input-group col-md-2 text-primary">ประเภท</div>
+              <div class="input-group col-md-2 text-primary">ยอดชำระ</div>
             </div>
           </b-card-body>
-          <hr class="new2" />
+          <hr class="new1" />
 
           <!------------------------------------------------------------------------------------>
 
-          <b-card class="shadow-sm mt-3 mb-3 p-4 bg-light">
+          <b-card class="shadow-none mt-3 mb-3 p-4 bg-light">
             <div class="form-row">
               <b-check></b-check>
               <div class="iuput-group col-md-2">ด.ญ.ฮยอนจิน เดวา</div>
@@ -304,40 +300,41 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.searchBlock {
-  input {
-    padding-right: 30px;
-  }
-  .labelSearchBtn {
-    width: 20px;
-    height: 20px;
-    background-image: url(~static/images/icon_search@2x.png);
-    //https://via.placeholder.com/150
-    background-size: cover;
-    background-position: center center;
-    right: 8px;
-    top: 24%;
-    padding: 0 0 0;
-    position: absolute;
-    background-color: white;
-    cursor: pointer;
-    z-index: 99;
-  }
-  .labelPlusBtn {
-    width: 20px;
-    height: 20px;
-    background-image: url(/images/icon/icon-plus-circle@2x.png);
-    background-size: cover;
-    background-position: center center;
-    right: 31px;
-    top: 23%;
-    padding: 0 0 0;
-    position: absolute;
-    background-color: white;
-    cursor: pointer;
-    // z-index: 99;
-  }
+.labelSearchBtn {
+  width: 20px;
+  height: 20px;
+  background-image: url(~static/images/icon_search@2x.png);
+  //https://via.placeholder.com/150
+  background-size: cover;
+  background-position: center center;
+  right: 8px;
+  top: 24%;
+  padding: 0 0 0;
+  position: absolute;
+  background-color: white;
+  cursor: pointer;
+  z-index: 99;
 }
+// .searchBlock {
+//   input {
+//     padding-right: 30px;
+//   }
+
+// .labelPlusBtn {
+//   width: 20px;
+//   height: 20px;
+//   background-image: url(/images/icon/icon-plus-circle@2x.png);
+//   background-size: cover;
+//   background-position: center center;
+//   right: 31px;
+//   top: 23%;
+//   padding: 0 0 0;
+//   position: absolute;
+//   background-color: white;
+//   cursor: pointer;
+//   // z-index: 99;
+// }
+// }
 // .card {
 //   border: none;
 // }

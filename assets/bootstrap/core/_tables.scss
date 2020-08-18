@@ -3,6 +3,11 @@
     border-collapse: separate;
     border-spacing: 0 10px;
   }
+  th {
+    /* padding: 0.75rem; */
+    /* vertical-align: top; */
+    border-top: none;
+  }
 
   td {
     vertical-align: middle;

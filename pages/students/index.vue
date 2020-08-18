@@ -4,18 +4,18 @@
       <div class="form-row">
         <div class="iuput-group col-md-6">
           <select
-            class="form-control shadow-sm w-25 h-100"
+            class="form-control shadow-sm w-25 mb-3 h-75"
             name="LeaveType"
             @change="onChange($event)"
+            v-model="key"
           >
             <option :value="null">ทำรายการ</option>
-            <option value="1">แจ้งเตือนค่าแรกเข้า</option>
-            <option value="1">แจ้งเตือนค่าเทอม</option>
+            <option value="1">ดูแลนักเรียน</option>
           </select>
         </div>
         <div class="input-group col-md-4">
           <!-- <b-input-group> -->
-          <b-form-input class="form-control h-100" placeholder="ค้นหาชื่อ-นามสกุล / สถานศึกษา "></b-form-input>
+          <b-form-input class="form-control h-100" placeholder="ค้นหาชื่อ-นามสกุล / ตำแหน่ง"></b-form-input>
           <b-input-group-append>
             <b-button variant="primary">
               <b-img src="~static/images/Group 3472.png" />
@@ -25,46 +25,125 @@
         </div>
       </div>
     </b-card-body>
+    <div class="decorationtop"></div>
 
-    <div class="overflow-auto">
-      <b-table
-        class="mb-0 table-leave-line"
-        thead-class="border"
-        :tbody-tr-class="setTbodyTrClass"
-        id="my-table"
-        :items="entities"
-        :fields="tableFields"
-        :per-page="perPage"
-        :busy="loading"
-        :current-page="currentPage"
-        head-variant="primary"
-      >
-        <template v-slot:head(show_details)="row">
-          <b-form-checkbox v-model="row.detailsShowing"></b-form-checkbox>
-        </template>
-
-        <template v-slot:cell(show_details)="row">
-          <b-form-checkbox v-model="row.detailsShowing"></b-form-checkbox>
-        </template>
-
-        <template v-slot:cell(image)="row">
-          <b-img src="~static/images/eye.png" v-model="row.checkclick"></b-img>
-          <!-- เวลาเปิดใช้งานมันจะไม่สามารถใช้ฟังชั่นอื่นได้-->
-          <!-- <b-link class="stretched-link" to="/students/editstudent"></b-link> -->
-        </template>
-      </b-table>
-      <div class="mt-3">
-        <b-pagination
-          v-model="currentPage"
-          :total-rows="rows"
-          :per-page="perPage"
-          aria-controls="my-table"
-          align="center"
-        ></b-pagination>
+    <!----------------------------------------------------------------------------------->
+    <b-card-body class="mt-3 mb-3 p-3">
+      <div class="form-row">
+        <b-check></b-check>
+        <div class="iuput-group col-md-2">ชื่อ-นามสกุล</div>
+        <div class="input-group col-md-2">ครูดูแล</div>
+        <div class="input-group col-md-2">ประเภท</div>
+        <div class="input-group col-md-2">ยอดชำระ</div>
       </div>
-      <!-- <p>Current Page: {{ currentPage }}</p> -->
+    </b-card-body>
+    <div class="decorationtop"></div>
+
+    <!------------------------------------------------------------------------------------>
+
+    <b-card class="shadow-sm mt-3 mb-3 p-4">
+      <div class="form-row">
+        <b-check></b-check>
+        <div class="iuput-group col-md-2">ด.ญ.ฮยอนจิน เดวา</div>
+        <div class="input-group col-md-2">กรองแก้ว รักสะอาด</div>
+        <div class="input-group col-md-2">รายวัน</div>
+        <div class="input-group col-md-2">ชำระแล้ว</div>
+
+        <div class="input-group col-md-2">
+          <b-img src="~/static/images/eye.png" />
+          <b-link class="stretched-link" to="/students/editstudent"></b-link>
+        </div>
+      </div>
+    </b-card>
+    <!------------------------------------------------------------------------------------>
+
+    <b-card class="shadow-sm mt-3 mb-3 p-4">
+      <div class="form-row">
+        <b-check></b-check>
+        <div class="iuput-group col-md-2">ด.ช.ฮยอนซอ อู</div>
+        <div class="input-group col-md-2">กรองแก้ว รักสะอาด</div>
+        <div class="input-group col-md-2">รายวัน</div>
+        <div class="input-group col-md-2 text-danger">ค้างชำระ</div>
+        <div class="input-group col-md-2">
+          <b-img src="~/static/images/eye.png" />
+        </div>
+      </div>
+    </b-card>
+    <!------------------------------------------------------------------------------------>
+
+    <b-card class="shadow-sm mt-3 mb-3 p-4">
+      <div class="form-row">
+        <b-check></b-check>
+        <div class="iuput-group col-md-2">ด.ญ.แพรววา คงสวัสดิ์</div>
+        <div class="input-group col-md-2">อดิศักดิ์ กรุงทอง</div>
+        <div class="input-group col-md-2">รายเดือน</div>
+        <div class="input-group col-md-2">ชำระแล้ว</div>
+        <div class="input-group col-md-2">
+          <b-img src="~/static/images/eye.png" />
+        </div>
+      </div>
+    </b-card>
+    <!------------------------------------------------------------------------------------>
+
+    <b-card class="shadow-sm mt-3 mb-3 p-4">
+      <div class="form-row">
+        <b-check></b-check>
+        <div class="iuput-group col-md-2">ด.ญ.น่านฟ้า ใจดี</div>
+        <div class="input-group col-md-2">อดิศักดิ์ กรุงทอง</div>
+        <div class="input-group col-md-2">รายเดือน</div>
+        <div class="input-group col-md-2">ชำระแล้ว</div>
+        <div class="input-group col-md-2">
+          <b-img src="~/static/images/eye.png" />
+        </div>
+      </div>
+    </b-card>
+    <!------------------------------------------------------------------------------------>
+
+    <b-card class="shadow-sm mt-3 mb-3 p-4">
+      <div class="form-row">
+        <b-check></b-check>
+        <div class="iuput-group col-md-2">ด.ช.น่านน้ำ ใจดี</div>
+        <div class="input-group col-md-2">ฟ้าใส สีคราม</div>
+        <div class="input-group col-md-2">รายวัน</div>
+        <div class="input-group col-md-2">ชำระแล้ว</div>
+        <div class="input-group col-md-2">
+          <b-img src="~/static/images/eye.png" />
+        </div>
+      </div>
+    </b-card>
+    <!------------------------------------------------------------------------------------>
+
+    <div class="bar-center">
+      <b-button-toolbar
+        aria-label="Toolbar with button groups"
+        key-nav
+        class="justify-content-md-center"
+      >
+        <b-button class="shadow-sm p-2.5 m-1 bg-white rounded bar-in-btn">
+          <img src="~/static/images/Group 3498.png" />
+        </b-button>
+        <b-button class="shadow-sm p-2.5 m-1 bg-white rounded bar-in-btn">
+          <img src="~/static/images/Path 939.png" />
+        </b-button>
+
+        <b-button class="shadow-sm p-2.5 m-1 bg-white rounded bar-in-btn">1</b-button>
+
+        <b-button class="shadow-sm p-2.5 m-1 bg-white rounded bar-in-btn">2</b-button>
+
+        <b-button class="shadow-sm p-2.5 m-1 bg-white rounded bar-in-btn">
+          <img src="~/static/images/Path 940.png" />
+        </b-button>
+        <b-button class="shadow-sm p-2.5 m-1 bg-white rounded bar-in-btn">
+          <img src="~/static/images/Group 3499.png" />
+        </b-button>
+        <h5 class="m-3">แสดงจำนวน</h5>
+        <b-button class="shadow-sm p-2.5 m-1 bg-white rounded bar-in-btn">
+          5
+          <img src="~/static/images/Path 941.png" />
+        </b-button>
+      </b-button-toolbar>
     </div>
-    <!-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+    <!--------------------------------------------------------------------------------------------------------->
     <div>
       <b-modal
         id="bv-modal-example"
@@ -76,13 +155,9 @@
         no-stacking
         ref="modalExample"
       >
-        <!-- <b-container> </b-container> -->
         <b-container fluid class="text-center">
-          <div class="text-primary">ทำรายการเรียบร้อยแล้ว</div>
-          <div class="ml-md-auto p-3">
-            ได้แจ้งเตือนค่าเทอม "ด.ช.ฮยอนซอ อู"
-            เรียบร้อยแล้วค่ะ
-          </div>
+          <div class="text-primary">ทำรายการเรียนร้อย</div>
+          <div class="ml-md-auto p-3">ได้เพิ่มนักเรียนไปยังครู "ฟ้าใส สีคราม" เรียบร้อยแล้วค่ะ</div>
           <div class="justify-content-md-center p-2">
             <b-button variant="primary" class="sign-in-btn w-100">ตกลงครู</b-button>
           </div>
@@ -95,283 +170,18 @@
 <script>
 export default {
   data() {
-    return {
-      loading: false,
-      //จำนวนคอลั้ม
-      perPage: 5,
-      currentPage: 5,
-      entities: [
-        {
-          name: "ด.ญ.ฮยอนจิน  เดวา",
-          school: "ฟ้าคิดส์เนอสเซอรี่ ",
-          care: "กรองแก้ว รักสะอาด",
-          course: "รายวัน",
-          payment: "ชำระแล้ว",
-        },
-        {
-          name: "ด.ญ.ฮยอนจิน  เดวา",
-          school: "ฟ้าคิดส์เนอสเซอรี่ ",
-          care: "กรองแก้ว รักสะอาด",
-          course: "รายวัน",
-          payment: "ชำระแล้ว",
-        },
-        {
-          name: "ด.ญ.ฮยอนจิน  เดวา",
-          school: "ฟ้าคิดส์เนอสเซอรี่ ",
-          care: "กรองแก้ว รักสะอาด",
-          course: "รายวัน",
-          payment: "ค้างชำระ",
-        },
-        {
-          name: "ด.ญ.ฮยอนจิน  เดวา",
-          school: "ฟ้าคิดส์เนอสเซอรี่ ",
-          care: "กรองแก้ว รักสะอาด",
-          course: "รายวัน",
-          payment: "ชำระแล้ว",
-        },
-        {
-          name: "ด.ญ.ฮยอนจิน  เดวา",
-          school: "ฟ้าคิดส์เนอสเซอรี่ ",
-          care: "กรองแก้ว รักสะอาด",
-          course: "รายวัน",
-          payment: "ชำระแล้ว",
-        },
-        {
-          name: "ด.ญ.ฮยอนจิน  เดวา",
-          school: "ฟ้าคิดส์เนอสเซอรี่ ",
-          care: "กรองแก้ว รักสะอาด",
-          course: "รายวัน",
-          payment: "ชำระแล้ว",
-        },
-        {
-          name: "ด.ญ.ฮยอนจิน  เดวา",
-          school: "ฟ้าคิดส์เนอสเซอรี่ ",
-          care: "กรองแก้ว รักสะอาด",
-          course: "รายวัน",
-          payment: "ค้างชำระ",
-        },
-        {
-          name: "ด.ญ.ฮยอนจิน  เดวา",
-          school: "ฟ้าคิดส์เนอสเซอรี่ ",
-          care: "กรองแก้ว รักสะอาด",
-          course: "รายวัน",
-          payment: "ชำระแล้ว",
-        },
-        {
-          name: "ด.ญ.ฮยอนจิน  เดวา",
-          school: "ฟ้าคิดส์เนอสเซอรี่ ",
-          care: "กรองแก้ว รักสะอาด",
-          course: "รายวัน",
-          payment: "ชำระแล้ว",
-        },
-        {
-          name: "ด.ญ.ฮยอนจิน  เดวา",
-          school: "ฟ้าคิดส์เนอสเซอรี่ ",
-          care: "กรองแก้ว รักสะอาด",
-          course: "รายวัน",
-          payment: "ชำระแล้ว",
-        },
-        {
-          name: "ด.ญ.ฮยอนจิน  เดวา",
-          school: "ฟ้าคิดส์เนอสเซอรี่ ",
-          care: "กรองแก้ว รักสะอาด",
-          course: "รายวัน",
-          payment: "ค้างชำระ",
-        },
-        {
-          name: "ด.ญ.ฮยอนจิน  เดวา",
-          school: "ฟ้าคิดส์เนอสเซอรี่ ",
-          care: "กรองแก้ว รักสะอาด",
-          course: "รายวัน",
-          payment: "ชำระแล้ว",
-        },
-        {
-          name: "ด.ญ.ฮยอนจิน  เดวา",
-          school: "ฟ้าคิดส์เนอสเซอรี่ ",
-          care: "กรองแก้ว รักสะอาด",
-          course: "รายวัน",
-          payment: "ชำระแล้ว",
-        },
-        {
-          name: "ด.ญ.ฮยอนจิน  เดวา",
-          school: "ฟ้าคิดส์เนอสเซอรี่ ",
-          care: "กรองแก้ว รักสะอาด",
-          course: "รายวัน",
-          payment: "ชำระแล้ว",
-        },
-        {
-          name: "ด.ญ.ฮยอนจิน  เดวา",
-          school: "ฟ้าคิดส์เนอสเซอรี่ ",
-          care: "กรองแก้ว รักสะอาด",
-          course: "รายวัน",
-          payment: "ชำระแล้ว",
-        },
-        {
-          name: "ด.ญ.ฮยอนจิน  เดวา",
-          school: "ฟ้าคิดส์เนอสเซอรี่ ",
-          care: "กรองแก้ว รักสะอาด",
-          course: "รายวัน",
-          payment: "ค้างชำระ",
-        },
-        {
-          name: "ด.ญ.ฮยอนจิน  เดวา",
-          school: "ฟ้าคิดส์เนอสเซอรี่ ",
-          care: "กรองแก้ว รักสะอาด",
-          course: "รายวัน",
-          payment: "ชำระแล้ว",
-        },
-        {
-          name: "ด.ญ.ฮยอนจิน  เดวา",
-          school: "ฟ้าคิดส์เนอสเซอรี่ ",
-          care: "กรองแก้ว รักสะอาด",
-          course: "รายวัน",
-          payment: "ชำระแล้ว",
-        },
-        {
-          name: "ด.ญ.ฮยอนจิน  เดวา",
-          school: "ฟ้าคิดส์เนอสเซอรี่ ",
-          care: "กรองแก้ว รักสะอาด",
-          course: "รายวัน",
-          payment: "ชำระแล้ว",
-        },
-        {
-          name: "ด.ญ.ฮยอนจิน  เดวา",
-          school: "ฟ้าคิดส์เนอสเซอรี่ ",
-          care: "กรองแก้ว รักสะอาด",
-          course: "รายวัน",
-          payment: "ค้างชำระ",
-        },
-        {
-          name: "ด.ญ.ฮยอนจิน  เดวา",
-          school: "ฟ้าคิดส์เนอสเซอรี่ ",
-          care: "กรองแก้ว รักสะอาด",
-          course: "รายวัน",
-          payment: "ชำระแล้ว",
-        },
-        {
-          name: "ด.ญ.ฮยอนจิน  เดวา",
-          school: "ฟ้าคิดส์เนอสเซอรี่ ",
-          care: "กรองแก้ว รักสะอาด",
-          course: "รายวัน",
-          payment: "ชำระแล้ว",
-        },
-        {
-          name: "ด.ญ.ฮยอนจิน  เดวา",
-          school: "ฟ้าคิดส์เนอสเซอรี่ ",
-          care: "กรองแก้ว รักสะอาด",
-          course: "รายวัน",
-          payment: "ชำระแล้ว",
-        },
-        {
-          name: "ด.ญ.ฮยอนจิน  เดวา",
-          school: "ฟ้าคิดส์เนอสเซอรี่ ",
-          care: "กรองแก้ว รักสะอาด",
-          course: "รายวัน",
-          payment: "ค้างชำระ",
-        },
-        {
-          name: "ด.ญ.ฮยอนจิน  เดวา",
-          school: "ฟ้าคิดส์เนอสเซอรี่ ",
-          care: "กรองแก้ว รักสะอาด",
-          course: "รายวัน",
-          payment: "ชำระแล้ว",
-        },
-        {
-          name: "ด.ญ.ฮยอนจิน  เดวา",
-          school: "ฟ้าคิดส์เนอสเซอรี่ ",
-          care: "กรองแก้ว รักสะอาด",
-          course: "รายวัน",
-          payment: "ชำระแล้ว",
-        },
-      ],
-      tableFields: [
-        {
-          show_details: "",
-        },
-        {
-          key: "name",
-          label: "ชื่อ-นามสกุล",
-        },
-        {
-          key: "school",
-          label: "สถานศึกษา",
-        },
-        {
-          key: "care",
-          label: "ดูแล",
-        },
-        {
-          key: "course",
-          label: "หลักสูตร",
-        },
-        {
-          key: "payment",
-          label: "ยอดชำระ",
-        },
-        { key: "image", label: " ", sortable: false },
-      ],
-    };
+    key: "";
+    return {};
   },
-  computed: {
-    rows() {
-      return this.entities.length;
-    },
-  },
+
   methods: {
     onChange($event) {
       console.log(event.target.value);
       this.$refs.modalExample.show();
-    },
-    getColumnStyle(field) {},
-    setTbodyTrClass(item) {
-      const classes = ["custom-border", "pt-4", "mt-5"];
-      return classes;
     },
   },
 };
 </script>
 
 <style lang="scss" scoped>
-.searchBlock {
-  input {
-    padding-right: 30px;
-  }
-  .labelSearchBtn {
-    width: 20px;
-    height: 20px;
-    background-image: url(~static/images/icon_search@2x.png);
-    //https://via.placeholder.com/150
-    background-size: cover;
-    background-position: center center;
-    right: 8px;
-    top: 24%;
-    padding: 0 0 0;
-    position: absolute;
-    background-color: white;
-    cursor: pointer;
-    z-index: 99;
-  }
-  .labelPlusBtn {
-    width: 20px;
-    height: 20px;
-    background-image: url(/images/icon/icon-plus-circle@2x.png);
-    background-size: cover;
-    background-position: center center;
-    right: 31px;
-    top: 23%;
-    padding: 0 0 0;
-    position: absolute;
-    background-color: white;
-    cursor: pointer;
-    // z-index: 99;
-  }
-}
-.card {
-  border: none;
-}
-// .modal-content {
-
-//     /* background-color: #fff; */
-
-// }
 </style>

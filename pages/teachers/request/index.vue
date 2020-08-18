@@ -15,19 +15,19 @@
           </select>
         </div>
         <div class="input-group col-md-4">
-          <b-input
-            type="input"
-            placeholder="ค้นหาชื่อ-นามสกุล/ตำแหน่ง"
-            class="form-control border border-light w-25 mb-3 h-75"
-          />
-        </div>
-        <div class="input-group col-md-2">
-          <b-button type="submit" variant="primary" class="w-75 mb-3 h-75 sign-in-btn">ค้าหา</b-button>
+          <!-- <b-input-group> -->
+          <b-form-input class="form-control h-100" placeholder="ค้นหา"></b-form-input>
+          <b-input-group-append>
+            <b-button variant="primary">
+              <b-img src="~static/images/Group 3472.png" />
+            </b-button>
+          </b-input-group-append>
+          <!-- </b-input-group> -->
         </div>
       </div>
     </b-card-body>
-    <div class="decoration-top"></div>
-    <div class="decoration-botton"></div>
+    <div class="decorationtop"></div>
+
     <!----------------------------------------------------------------------------------->
     <b-card-body class="mt-3 mb-3 p-3">
       <div class="form-row">
@@ -38,8 +38,8 @@
         <div class="input-group col-md-2">ยอดชำระ</div>
       </div>
     </b-card-body>
-    <div class="decoration-top"></div>
-    <div class="decoration-botton"></div>
+    <div class="decorationtop"></div>
+
     <!------------------------------------------------------------------------------------>
 
     <b-card class="shadow-sm mt-3 mb-3 p-4">

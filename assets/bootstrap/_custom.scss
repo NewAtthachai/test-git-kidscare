@@ -1,30 +1,27 @@
 // // Here you can add other styles
-.table-header {
-  background: #4a4a4a;
-  color: #fff;
-}
+// .table-header {
+//   background: #4a4a4a;
+//   color: #fff;
+// }
 //เว้นระยะห่างของ tabal เพราะ css .table-outline ใช้งานไม่ได้
 .table-leave-line {
   border-collapse: separate;
   border-spacing: 0 10px;
 }
 //line ของหน้า report
-// table,
-// th {
-//   border-bottom: 1px dashed #cbcbcb;
-// }
-// table,
-// th,
-// td {
-//   border-bottom: 1px dashed #cbcbcb;
-// }
+
+table,
+th,
+td {
+  border-bottom: 1px dashed #cbcbcb;
+}
 
 // hr.divider {
 //   border-top: 1px solid #8c8b8b;
 // }
-// hr.new1 {
-//   border-top: 1px dashed #cbcbcb;
-// }
+hr.new1 {
+  border-top: 1px dashed #cbcbcb;
+}
 
 // hr.new2 {
 //   border-top: none;
@@ -88,13 +85,13 @@
 // .test {
 //   padding: unset !important;
 // }
-// .btn-bar-bottom {
-//   position: absolute;
-//   // right: 10px;
-//   bottom: 10px;
-//   width: 100%;
-//   // height: 30px;
-// }
+.btn-bar-bottom {
+  position: absolute;
+  // right: 10px;
+  bottom: 10px;
+  width: 100%;
+  // height: 30px;
+}
 // .bar-center {
 //   position: absolute;
 //   right: 10px;
@@ -102,30 +99,30 @@
 //   width: 100%;
 //   height: 30px;
 // }
-// //ปุ่มadd +
-// .floating-btn {
-//   width: 80px;
-//   height: 80px;
-//   background: #ffffff;
-//   display: flex;
-//   align-items: center;
-//   justify-content: center;
-//   /* text-decoration: none; */
-//   border-radius: 50%;
-//   color: #ff57ab;
-//   // font-size: 100px;
-//   // box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.25);
-//   position: fixed;
-//   right: 40px;
-//   bottom: 80px;
-// }
-// .dot-circle {
-//   width: 60px;
-//   height: 60px;
-//   display: inline-block;
-//   border-radius: 50%;
-//   border: 1px solid#F7F9FB;
-// }
+//ปุ่มadd +
+.floating-btn {
+  width: 80px;
+  height: 80px;
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* text-decoration: none; */
+  border-radius: 50%;
+  color: #ff57ab;
+  // font-size: 100px;
+  // box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.25);
+  position: fixed;
+  right: 40px;
+  bottom: 80px;
+}
+.dot-circle {
+  width: 60px;
+  height: 60px;
+  display: inline-block;
+  border-radius: 50%;
+  border: 1px solid#F7F9FB;
+}
 // /*------------------------------------------------------------*/
 // @media (max-width: 991.98px) {
 //   .sign-in-btn {
@@ -149,8 +146,8 @@
   border-color: #06a8f0;
   border-radius: 0px;
 }
-//css input สำหรับรับข้อมูล 
-.input-custom{
+//css input สำหรับรับข้อมูล
+.input-custom {
   background: none;
   outline: 0;
   border-width: 0 0 2px;
@@ -203,17 +200,17 @@
 //   background-color: #f7f9fb;
 // }
 
-// #customers {
-//   // font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
-//   // border-collapse: collapse;
-//   // width: 100%;
-// }
+#customers {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
 
-// #customers td,
-// #customers th {
-//   border: 1px solid #ddd;
-//   padding: 8px;
-// }
+#customers td,
+#customers th {
+  // border: 1px solid #ddd;
+  padding: 8px;
+}
 
 // #customers td {
 //   // padding: 10px;
@@ -221,25 +218,11 @@
 
 // /*----------------------------------------------------------------------------*/
 //กำหนดระยะตัวหนังสือห่างจากขอบภายใน card
-// .card-body {
-//   // padding: 0rem;
-//   // text-indent: 30px;
-// }
-
-// css ของ b-table
-.custom-border > td {
-  padding-top: 25px;
-  padding-bottom: 25px;
-  border: none;
-  background-color: white;
-  // border-top: 1px solid green !important;
+.card-body {
+  padding: 0rem;
+  text-indent: 30px;
 }
-//ทำให้มีส่วนเว้าตรงขอบ
-// .custom-border > td:first-child {
-//   border-top-left-radius: 10px;
-//   border-bottom-left-radius: 10px;
-// }
-// .custom-border > td:last-child {
-//   border-bottom-right-radius: 10px;
-//   border-top-right-radius: 10px;
+// .teeeee {
+//   padding: 0rem;
+//   text-indent: 30px;
 // }
