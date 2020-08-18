@@ -338,9 +338,9 @@ export default {
     // z-index: 99;
   }
 }
-.card {
-  border: none;
-}
+// .card {
+//   border: none;
+// }
 // .modal-content {
 
 //     /* background-color: #fff; */

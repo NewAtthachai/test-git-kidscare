@@ -1,5 +1,8 @@
 .table-outline {
-  border: 1px solid $table-border-color;
+  table {
+    border-collapse: separate;
+    border-spacing: 0 10px;
+  }
 
   td {
     vertical-align: middle;
@@ -7,7 +10,6 @@
 }
 
 .table-align-middle {
-
   td {
     vertical-align: middle;
   }

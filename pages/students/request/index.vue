@@ -1,133 +1,92 @@
 <template>
-  <div class="mt-3">
-    <div class="form-row">
-      <div class="iuput-group col-md-6">
-        <select class="form-control shadow-sm w-25 mb-3 h-75">
-          <option value="1">ทำรายการ</option>
-          <option value="2">ดูแลนักเรียน</option>
-        </select>
-      </div>
-      <div class="input-group col-md-4">
-        <b-input
-          type="input"
-          placeholder="ค้นหา"
-          class="form-control border border-light w-25 mb-3 h-75"
-        />
-      </div>
-      <div class="input-group col-md-2">
-        <button type="submit" class="btn btn-primary w-75 mb-3 h-75">ค้าหา</button>
-      </div>
-    </div>
-
-    <b-card>
-      <b-card-body>ข้อมูลครู</b-card-body>
-      <div class="decoration-top"></div>
-      <div class="decoration-botton"></div>
-      <table id="customers">
-        <tr>
-          <td>
-            <b-radio type="radio" name="exampleRadios" id="exampleRadios1" value="option1"></b-radio>
-          </td>
-          <td>ชื่อ-นามสกุล</td>
-          <td>เบอร์โทรศัพท์</td>
-          <td>สถานศึกษา</td>
-          <td>ตำแหน่ง</td>
-          <td>จำนวนนักเรียน/คน</td>
-        </tr>
-        <div class="decoration-mid"></div>
-
-        <tr>
-          <td>
-            <b-radio type="radio" name="exampleRadios" id="exampleRadios2" value="option2"></b-radio>
-          </td>
-
-          <td>โทมัส แอนดรูโน่</td>
-          <td>081-234-5678</td>
-          <td>ฟ้าคิดส์เนอสเซอรี่</td>
-          <td>ภาษาต่างประเทศ</td>
-          <td>0</td>
-          <td>
-            <b-img src="/images/eye.png"></b-img>
-          </td>
-        </tr>
-        <div class="decoration-mid"></div>
-
-        <tr>
-          <td>
-            <b-radio type="radio" name="exampleRadios" id="exampleRadios3" value="option3"></b-radio>
-          </td>
-
-          <td>ฟ้าใส สีคราม</td>
-          <td>088-765-4321</td>
-          <td>ฟ้าคิดส์เนอสเซอรี่</td>
-          <td>ครูประจำชั้น</td>
-          <td>5</td>
-          <td>
-            <b-img src="/images/eye.png"></b-img>
-          </td>
-        </tr>
-      </table>
-    </b-card>
-
-    <!------------------------>
-    <div>
-      <b-button id="show-btn" @click="$bvModal.show('bv-modal-example')">Open Modal</b-button>
-
-      <b-modal id="bv-modal-example" size="xl" hide-footer ok-only no-stacking>
-        <template v-slot:modal-title>ข้อมูลครู</template>
-
-        <div class="decoration-top"></div>
-        <div class="decoration-botton"></div>
-        <table id="customers">
-          <tr>
-            <td>
-              <b-radio type="radio" name="exampleRadios" id="exampleRadios1" value="option1"></b-radio>
-            </td>
-            <td>ชื่อ-นามสกุล</td>
-            <td>เบอร์โทรศัพท์</td>
-            <td>สถานศึกษา</td>
-            <td>ตำแหน่ง</td>
-            <td>จำนวนนักเรียน/คน</td>
-          </tr>
-          <div class="decoration-mid"></div>
-
-          <tr>
-            <td>
-              <b-radio type="radio" name="exampleRadios" id="exampleRadios2" value="option2"></b-radio>
-            </td>
-
-            <td>โทมัส แอนดรูโน่</td>
-            <td>081-234-5678</td>
-            <td>ฟ้าคิดส์เนอสเซอรี่</td>
-            <td>ภาษาต่างประเทศ</td>
-            <td>0</td>
-            <td>
-              <b-img src="/images/eye.png"></b-img>
-            </td>
-          </tr>
-          <div class="decoration-mid"></div>
-
-          <tr>
-            <td>
-              <b-radio type="radio" name="exampleRadios" id="exampleRadios3" value="option3"></b-radio>
-            </td>
-
-            <td>ฟ้าใส สีคราม</td>
-            <td>088-765-4321</td>
-            <td>ฟ้าคิดส์เนอสเซอรี่</td>
-            <td>ครูประจำชั้น</td>
-            <td>5</td>
-            <td>
-              <b-img src="/images/eye.png"></b-img>
-            </td>
-          </tr>
-        </table>
-        <div class="row justify-content-end">
-          <b-button v-b-modal.modal-multi-3>Open Third Modal</b-button>
+  <div class="my-3">
+    <b-card-body class="mt-3 mb-3">
+      <div class="form-row">
+        <div class="iuput-group col-md-6">
+          <select
+            class="form-control shadow-sm w-25 h-100"
+            name="LeaveType"
+            @change="onChange($event)"
+          >
+            <option :value="null">ทำรายการ</option>
+            <option value="1">อนุมัติ</option>
+            <option value="1">ไม่อนุมัติ</option>
+          </select>
         </div>
-      </b-modal>
-      <b-modal id="modal-multi-3" size="sm" title="ทำรายการเรียบร้อยแล้ว" ok-only>
-        <p class="d-block text-center">ได้เพิ่มนักเรียนไปยังครู "ฟ้าใส สีคราม" เรียบร้อยแล้วค่ะ</p>
+        <div class="input-group col-md-4">
+          <!-- <b-input-group> -->
+          <b-form-input class="form-control h-100" placeholder="ค้นหาชื่อ-นามสกุล / สถานศึกษา "></b-form-input>
+          <b-input-group-append>
+            <b-button variant="primary">
+              <b-img src="~static/images/Group 3472.png" />
+            </b-button>
+          </b-input-group-append>
+          <!-- </b-input-group> -->
+        </div>
+      </div>
+    </b-card-body>
+
+    <div class="overflow-auto">
+      <b-table
+        class="mb-0 table-leave-line"
+        thead-class="border"
+        :tbody-tr-class="setTbodyTrClass"
+        id="my-table"
+        :items="entities"
+        :fields="tableFields"
+        :per-page="perPage"
+        :busy="loading"
+        :current-page="currentPage"
+        head-variant="primary"
+      >
+        <template v-slot:head(show_details)="row">
+          <b-form-checkbox v-model="row.detailsShowing"></b-form-checkbox>
+        </template>
+
+        <template v-slot:cell(show_details)="row">
+          <b-form-checkbox v-model="row.detailsShowing"></b-form-checkbox>
+        </template>
+
+        <template v-slot:cell(image)="row">
+          <b-img src="~static/images/eye.png" v-model="row.checkclick"></b-img>
+          <!-- เวลาเปิดใช้งานมันจะไม่สามารถใช้ฟังชั่นอื่นได้-->
+          <b-link class="stretched-link" to="/students/requeststudent"></b-link>
+        </template>
+      </b-table>
+      <div class="mt-3">
+        <b-pagination
+          v-model="currentPage"
+          :total-rows="rows"
+          :per-page="perPage"
+          aria-controls="my-table"
+          align="center"
+        ></b-pagination>
+      </div>
+      <!-- <p>Current Page: {{ currentPage }}</p> -->
+    </div>
+    <!-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+    <div>
+      <b-modal
+        id="bv-modal-example"
+        size="sm"
+        hide-header
+        hide-footer
+        ok-only
+        centered
+        no-stacking
+        ref="modalExample"
+      >
+        <!-- <b-container> </b-container> -->
+        <b-container fluid class="text-center">
+          <div class="text-primary">ทำรายการเรียบร้อยแล้ว</div>
+          <div class="ml-md-auto p-3">
+            ได้แจ้งเตือนค่าเทอม "ด.ช.ฮยอนซอ อู"
+            เรียบร้อยแล้วค่ะ
+          </div>
+          <div class="justify-content-md-center p-2">
+            <b-button variant="primary" class="sign-in-btn w-100">ตกลงครู</b-button>
+          </div>
+        </b-container>
       </b-modal>
     </div>
   </div>
@@ -135,60 +94,111 @@
 
 <script>
 export default {
-  mounted: function () {},
   data() {
     return {
-      aspects: [
-        { text: "ทำรายการ_1" },
-        { text: "ทำรายการ_2" },
-        { text: "ทำรายการ_3" },
+      loading: false,
+      //จำนวนคอลั้ม
+      perPage: 5,
+      currentPage: 5,
+      entities: [
+        {
+          name: "ด.ญ.ฮยอนจิน  เดวา",
+          school: "ฟ้าคิดส์เนอสเซอรี่ ",
+          course: "รายวัน",
+        },
+        {
+          name: "ด.ญ.ฮยอนจิน  เดวา",
+          school: "ฟ้าคิดส์เนอสเซอรี่ ",
+          course: "รายวัน",
+        },
+        {
+          name: "ด.ญ.ฮยอนจิน  เดวา",
+          school: "ฟ้าคิดส์เนอสเซอรี่ ",
+          course: "รายวัน",
+        },
+      ],
+      tableFields: [
+        {
+          show_details: "",
+        },
+        {
+          key: "name",
+          label: "ชื่อ-นามสกุล",
+        },
+        {
+          key: "school",
+          label: "สถานศึกษา",
+        },
+
+        {
+          key: "course",
+          label: "หลักสูตร",
+        },
+
+        { key: "image", label: " ", sortable: false },
       ],
     };
   },
-  methods: {},
+  computed: {
+    rows() {
+      return this.entities.length;
+    },
+  },
+  methods: {
+    onChange($event) {
+      console.log(event.target.value);
+      this.$refs.modalExample.show();
+    },
+    getColumnStyle(field) {},
+    setTbodyTrClass(item) {
+      const classes = ["custom-border", "pt-4", "mt-5"];
+      return classes;
+    },
+  },
 };
 </script>
 
 <style lang="scss" scoped>
-// .modal-header {
-//   // border-bottom: 0px;
-// }
-// .modal-footer {
-//   // border-top: 0px;
-// }
-// .decoration-top {
-//   height: 1px; /* ความสูงของเส้น */
-//   width: 100%; /* ความหนาของเส้น */
-//   background-color: #e0e3da; /* สีของเส้น */
-//   /* // margin: 50%; */
-//   /* // display: block; */
-// }
-// .decoration-botton {
-//   height: 4px; /* ความสูงของเส้น */
-//   width: 100%; /* ความหนาของเส้น */
+.searchBlock {
+  input {
+    padding-right: 30px;
+  }
+  .labelSearchBtn {
+    width: 20px;
+    height: 20px;
+    background-image: url(~static/images/icon_search@2x.png);
+    //https://via.placeholder.com/150
+    background-size: cover;
+    background-position: center center;
+    right: 8px;
+    top: 24%;
+    padding: 0 0 0;
+    position: absolute;
+    background-color: white;
+    cursor: pointer;
+    z-index: 99;
+  }
+  .labelPlusBtn {
+    width: 20px;
+    height: 20px;
+    background-image: url(/images/icon/icon-plus-circle@2x.png);
+    background-size: cover;
+    background-position: center center;
+    right: 31px;
+    top: 23%;
+    padding: 0 0 0;
+    position: absolute;
+    background-color: white;
+    cursor: pointer;
+    // z-index: 99;
+  }
+}
+.card {
+  border: none;
+}
+// .modal-content {
 
-//   background-color: #f9f9f9;
-// }
-// .decoration-mid {
-//   height: 1px; /* ความสูงของเส้น */
-//   width: 100%; /* ความหนาของเส้น */
+//     /* background-color: #fff; */
 
-//   background-color: #f7f9fb;
-// }
-// #customers {
-//   /* // font-family: "Trebuchet MS", Arial, Helvetica, sans-serif; */
-//   /* // border-collapse: collapse; */
-//   width: 100%;
-// }
-
-// #customers td {
-//   padding: 10px;
-// }
-
-// #customers th {
-//   padding-top: 12px;
-//   padding-bottom: 12px;
-//   /* // background-color: #4caf50; */
-//   color: black;
 // }
 </style>

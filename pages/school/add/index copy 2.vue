@@ -262,11 +262,11 @@
   </div>
 </template>
 <style >
-.custom-control-input:checked ~ .custom-control-label::before {
+/* .custom-control-input:checked ~ .custom-control-label::before {
   border-color: #ffffff;
   background-color: #06a8f0;
 }
 .custom-radio .custom-control-input:checked ~ .custom-control-label::after {
   background-image: none;
-}
+} */
 </style>
